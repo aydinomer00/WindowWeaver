@@ -19,7 +19,7 @@ WindowWeaver is a powerful and intuitive window management tool designed for mac
 
 ![image](https://github.com/user-attachments/assets/201b0f5c-61d1-480b-b1f6-81632c66b174)
 
-![image](https://github.com/user-attachments/assets/56b32aba-76e4-4ec9-9dd4-db1bbb60dd00)
+
 
 ![image](https://github.com/user-attachments/assets/12274a6a-4030-4a1b-adb4-0c13deeee8ef)
 
