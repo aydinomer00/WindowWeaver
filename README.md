@@ -2,17 +2,16 @@
 
 
 
-WindowWeaver, macOS için geliştirilmiş, güçlü ve kullanıcı dostu bir pencere yönetim aracıdır. Çalışma alanınızı hızlı ve etkili bir şekilde organize etmenizi sağlar.
+WindowWeaver is a powerful and intuitive window management tool designed for macOS. It helps you organize your workspace quickly and efficiently.
 
-## ✨ Özellikler
-
-- 🔷 Ekranı üçe bölme (sol, orta, sağ)
-- 🔲 Ekranı ikiye bölme (sol, sağ)
-- 📍 Köşelere konumlandırma (sol-üst, sağ-üst, sol-alt, sağ-alt)
-- ↕️ Dikey olarak ikiye bölme (üst, alt)
-- 🎯 Merkeze alma (özelleştirilebilir boyut)
-- 🖥️ Tam ekran modu
-- 🔝 Menü çubuğundan hızlı erişim
+✨ Features
+🔷 Split screen into thirds (left, center, right)
+🔲 Split screen into halves (left, right)
+📍 Position windows in corners (top-left, top-right, bottom-left, bottom-right)
+↕️ Vertical split (top, bottom)
+🎯 Center windows (customizable size)
+🖥️ Full-screen mode
+🔝 Quick access from the menu bar
 
 <img width="158" alt="image" src="https://github.com/user-attachments/assets/212e7552-bfb4-48e8-92df-b7190cb1f321" />
 
@@ -27,46 +26,40 @@ WindowWeaver, macOS için geliştirilmiş, güçlü ve kullanıcı dostu bir pen
 
 ![image](https://github.com/user-attachments/assets/102c599f-6672-49bd-9ae8-45180fc97c83)
 
-## ⚡️ Hızlı Kurulum
+⚡️ Quick Installation
 
-1. Son sürümü indirin https://github.com/aydinomer00/WindowWeaver/releases/tag/v1.0.0
-2. ZIP dosyasını açın
-3. WindowWeaver uygulamasını Applications klasörüne taşıyın
-4. Uygulamayı başlatın ve gerekli izinleri verin
+Download the latest version: WindowWeaver v1.0.0
+Extract the ZIP file
+Move the WindowWeaver application to the Applications folder
+Launch the app and grant the necessary permissions
 
+⌨️ Keyboard Shortcuts
 
-## ⌨️ Klavye Kısayolları
+Action	Shortcut
+2/3 Split	⌘ + ⌥ + ⇧ + ←/→
+1/3 Split	⌘ + ⇧ + ←/↓/→
+Half-Screen Split	⌘ + ⌃ + ←/→
+Full Screen	⌘ + ⌃ + ↵
+Center Window	⌘ + ⌃ + Space
 
-| İşlem | Kısayol |
-|-------|---------|
-| 2/3 Bölme | ⌘ + ⌥ + ⇧ + ←/→ |
-| 1/3 Bölme | ⌘ + ⇧ + ←/↓/→ |
-| Yarım Bölme | ⌘ + ⌃ + ←/→ |
-| Tam Ekran | ⌘ + ⌃ + ↵ |
-| Merkez | ⌘ + ⌃ + Space |
+🔧 System Requirements
 
+macOS 11.0 or later
+64-bit processor
+Accessibility permissions
 
+🔒 Privacy & Security
 
-## 🔧 Sistem Gereksinimleri
+Notarized by Apple
+Uses only the necessary system permissions
+Does not require an internet connection
+Does not collect any data
 
-- macOS 11.0 veya üzeri
-- 64-bit işlemci
-- Erişilebilirlik izinleri
+🤝 Contribute
 
-## 🔒 Gizlilik ve Güvenlik
+Your feedback and contributions are highly valued! You can contribute by opening an issue or submitting a pull request on GitHub.
 
-- Apple tarafından notarize edilmiştir
-- Sadece gerekli sistem izinlerini kullanır
-- İnternet bağlantısı gerektirmez
-- Veri toplamaz
-
-## 🤝 Katkıda Bulunma
-
-Önerileriniz ve katkılarınız bizim için değerli! Issue açarak veya Pull Request göndererek projeye katkıda bulunabilirsiniz.
-
-
-
-## 📞 İletişim
+📞 Contact
 
 aydinomermurat28@gmail.com
 
