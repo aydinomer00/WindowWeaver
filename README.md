@@ -15,6 +15,7 @@ WindowWeaver, macOS için geliştirilmiş, güçlü ve kullanıcı dostu bir pen
 - 🔝 Menü çubuğundan hızlı erişim
 
 <img width="158" alt="image" src="https://github.com/user-attachments/assets/212e7552-bfb4-48e8-92df-b7190cb1f321" />
+
 ![image](https://github.com/user-attachments/assets/3f0d2134-aee5-4342-91eb-bb52ecac490a)
 
 ![image](https://github.com/user-attachments/assets/201b0f5c-61d1-480b-b1f6-81632c66b174)
