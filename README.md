@@ -35,12 +35,7 @@ Launch the app and grant the necessary permissions
 
 ⌨️ Keyboard Shortcuts
 
-Action	Shortcut
-2/3 Split	⌘ + ⌥ + ⇧ + ←/→
-1/3 Split	⌘ + ⇧ + ←/↓/→
-Half-Screen Split	⌘ + ⌃ + ←/→
-Full Screen	⌘ + ⌃ + ↵
-Center Window	⌘ + ⌃ + Space
+<img width="135" alt="image" src="https://github.com/user-attachments/assets/3039c446-8f69-4c3d-9858-b577c793bb8f" />
 
 🔧 System Requirements
 
