@@ -40,7 +40,9 @@ Launch the app and grant the necessary permissions
 🔧 System Requirements
 
 macOS 11.0 or later
+
 64-bit processor
+
 Accessibility permissions
 
 🔒 Privacy & Security
