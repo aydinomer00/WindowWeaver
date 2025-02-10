@@ -39,18 +39,18 @@ Launch the app and grant the necessary permissions
 
 🔧 System Requirements
 
-macOS 11.0 or later
+-macOS 11.0 or later
 
-64-bit processor
+-64-bit processor
 
-Accessibility permissions
+-Accessibility permissions
 
 🔒 Privacy & Security
 
-Notarized by Apple
-Uses only the necessary system permissions
-Does not require an internet connection
-Does not collect any data
+-Notarized by Apple
+-Uses only the necessary system permissions
+-Does not require an internet connection
+-Does not collect any data
 
 🤝 Contribute
 
