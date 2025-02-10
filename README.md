@@ -64,13 +64,13 @@ WindowWeaver, macOS için geliştirilmiş, güçlü ve kullanıcı dostu bir pen
 
 Önerileriniz ve katkılarınız bizim için değerli! Issue açarak veya Pull Request göndererek projeye katkıda bulunabilirsiniz.
 
-## 📝 Lisans
 
-MIT License - Detaylar için [LICENSE](LICENSE) dosyasına bakın.
 
 ## 📞 İletişim
 
 aydinomermurat28@gmail.com
+
+
 https://www.linkedin.com/in/%C3%B6mer-murat-aydin-188397271/
 
 ---
