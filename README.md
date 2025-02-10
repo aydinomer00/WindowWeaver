@@ -1,6 +1,6 @@
 ![image](https://github.com/user-attachments/assets/b954d3b4-de9a-4485-9736-cd11e9fba026)# WindowWeaver 🪟
 
-![image](https://github.com/user-attachments/assets/2527672d-bff7-456d-be0d-9bc071987089)
+
 
 WindowWeaver, macOS için geliştirilmiş, güçlü ve kullanıcı dostu bir pencere yönetim aracıdır. Çalışma alanınızı hızlı ve etkili bir şekilde organize etmenizi sağlar.
 
