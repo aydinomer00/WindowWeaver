@@ -10,10 +10,43 @@
 		D3EF74972D5A7F590001C487 /* WindomWeaverr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WindomWeaverr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		D3EF74B22D5A80730001C487 /* Exceptions for "WindomWeaverr" folder in "WindomWeaverr" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = D3EF74962D5A7F590001C487 /* WindomWeaverr */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		D3EF74992D5A7F590001C487 /* WindomWeaverr */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				D3EF74B22D5A80730001C487 /* Exceptions for "WindomWeaverr" folder in "WindomWeaverr" target */,
+			);
 			path = WindomWeaverr;
+			sourceTree = "<group>";
+		};
+		D3EF74DF2D5A85E60001C487 /* Utils */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		D3EF74E02D5A85F30001C487 /* Features */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Features;
+			sourceTree = "<group>";
+		};
+		D3EF74E32D5A86090001C487 /* UI */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = UI;
+			sourceTree = "<group>";
+		};
+		D3EF74E42D5A86170001C487 /* Sources */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Sources;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -32,6 +65,10 @@
 		D3EF748E2D5A7F590001C487 = {
 			isa = PBXGroup;
 			children = (
+				D3EF74E42D5A86170001C487 /* Sources */,
+				D3EF74E32D5A86090001C487 /* UI */,
+				D3EF74E02D5A85F30001C487 /* Features */,
+				D3EF74DF2D5A85E60001C487 /* Utils */,
 				D3EF74992D5A7F590001C487 /* WindomWeaverr */,
 				D3EF74982D5A7F590001C487 /* Products */,
 			);
@@ -62,6 +99,10 @@
 			);
 			fileSystemSynchronizedGroups = (
 				D3EF74992D5A7F590001C487 /* WindomWeaverr */,
+				D3EF74DF2D5A85E60001C487 /* Utils */,
+				D3EF74E02D5A85F30001C487 /* Features */,
+				D3EF74E32D5A86090001C487 /* UI */,
+				D3EF74E42D5A86170001C487 /* Sources */,
 			);
 			name = WindomWeaverr;
 			packageProductDependencies = (
@@ -255,7 +296,12 @@
 				DEVELOPMENT_ASSET_PATHS = "\"WindomWeaverr/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WindomWeaverr/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = WindowWeaver;
+				INFOPLIST_KEY_LSApplicationCategoryType = "Privacy - AppleEvents Sending Usage Description";
+				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSSystemAdministrationUsageDescription = "WindowWeaver needs permission to manage windows positions";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -280,7 +326,12 @@
 				DEVELOPMENT_ASSET_PATHS = "\"WindomWeaverr/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WindomWeaverr/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = WindowWeaver;
+				INFOPLIST_KEY_LSApplicationCategoryType = "Privacy - AppleEvents Sending Usage Description";
+				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSSystemAdministrationUsageDescription = "WindowWeaver needs permission to manage windows positions";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",

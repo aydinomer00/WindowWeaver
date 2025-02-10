@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>NSAccessibilityAccess</key>
+	<string>This app requires accessibility access to manage windows.</string>
+	<key>NSAccessibilityUsageDescription</key>
+	<string>This app requires accessibility permission to manage windows.</string>
+	<key>Privacy - Accessibility</key>
+	<string>This app requires accessibility permission to manage windows.</string>
+	<key>NSAppleEventsUsageDescription</key>
+	<string>WindowWeaver needs AppleEvents permission to control window positions.</string>
+</dict>
+</plist>
