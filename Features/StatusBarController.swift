@@ -7,6 +7,7 @@
 
 import Cocoa
 import SwiftUI
+import ServiceManagement
 
 class StatusBarController: ObservableObject {
     static let shared = StatusBarController()
@@ -18,6 +19,15 @@ class StatusBarController: ObservableObject {
             self.statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
             self.setupUI()
             self.setupMenus()
+            self.setupLoginItem()
+        }
+    }
+    
+    private func setupLoginItem() {
+        if let bundleIdentifier = Bundle.main.bundleIdentifier {
+            if !SMLoginItemSetEnabled(bundleIdentifier as CFString, true) {
+                print("Login item eklenemedi")
+            }
         }
     }
     
@@ -118,10 +128,39 @@ class StatusBarController: ObservableObject {
         
         menu.addItem(NSMenuItem.separator())
         
+        // Launch at Login option
+        let launchAtLoginItem = NSMenuItem(title: "Launch at Login", action: #selector(toggleLaunchAtLogin), keyEquivalent: "")
+        launchAtLoginItem.target = self
+        launchAtLoginItem.state = isLoginItemEnabled() ? .on : .off
+        menu.addItem(launchAtLoginItem)
+        
+        menu.addItem(NSMenuItem.separator())
+        
         let quitItem = NSMenuItem(title: "Quit", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q")
         menu.addItem(quitItem)
         
         statusItem?.menu = menu
+    }
+    
+    private func isLoginItemEnabled() -> Bool {
+        if let bundleIdentifier = Bundle.main.bundleIdentifier {
+            for app in NSWorkspace.shared.runningApplications {
+                if app.bundleIdentifier == bundleIdentifier {
+                    return true
+                }
+            }
+        }
+        return false
+    }
+    
+    @objc private func toggleLaunchAtLogin() {
+        if let bundleIdentifier = Bundle.main.bundleIdentifier {
+            let currentState = isLoginItemEnabled()
+            SMLoginItemSetEnabled(bundleIdentifier as CFString, !currentState)
+            if let menuItem = statusItem?.menu?.items.first(where: { $0.action == #selector(toggleLaunchAtLogin) }) {
+                menuItem.state = !currentState ? .on : .off
+            }
+        }
     }
     
     // 2/3 Split Actions

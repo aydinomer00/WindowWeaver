@@ -5,7 +5,6 @@
 //  Created by Ömer Murat Aydın on 7.02.2025.
 //
 
-// WindowManager.swift
 import Cocoa
 import Carbon
 import ApplicationServices
@@ -13,7 +12,6 @@ import ApplicationServices
 let kAXFrameAttribute: CFString = "AXFrame" as CFString
 let kAXSizeAttribute: CFString = "AXSize" as CFString
 let kAXPositionAttribute: CFString = "AXPosition" as CFString
-
 
 enum ScreenPosition {
     enum Corner {
@@ -29,13 +27,12 @@ enum ScreenPosition {
     }
     
     enum TwoThirds {
-            case left, right
-        }
+        case left, right
+    }
     
     enum Vertical {
         case top, bottom
     }
-    
 }
 
 class WindowManager: ObservableObject {
@@ -48,30 +45,27 @@ class WindowManager: ObservableObject {
     }
     
     private func checkAccessibilityPermissions() {
-        let options = [kAXTrustedCheckOptionPrompt.takeUnretainedValue() as String: true]
+        let options = [kAXTrustedCheckOptionPrompt.takeUnretainedValue() as String: false]
         let accessEnabled = AXIsProcessTrustedWithOptions(options as CFDictionary)
         
         if !accessEnabled {
-            DispatchQueue.main.async {
-                let alert = NSAlert()
-                alert.messageText = "Erişilebilirlik İzni Gerekli"
-                alert.informativeText = "Bu uygulamanın tam olarak çalışabilmesi için System Settings > Privacy & Security > Accessibility'den izin vermeniz gerekiyor."
-                alert.addButton(withTitle: "Ayarları Aç")
-                alert.addButton(withTitle: "İptal")
-                
-                if alert.runModal() == .alertFirstButtonReturn {
-                    if let url = URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_Accessibility") {
-                        NSWorkspace.shared.open(url)
-                    }
+            let alert = NSAlert()
+            alert.messageText = "Accessibility Permission Required"
+            alert.informativeText = "This application needs accessibility permission to work properly. Please grant permission in System Settings > Privacy & Security > Accessibility."
+            alert.addButton(withTitle: "Open Settings")
+            alert.addButton(withTitle: "Cancel")
+            
+            if alert.runModal() == .alertFirstButtonReturn {
+                if let url = URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_Accessibility") {
+                    NSWorkspace.shared.open(url)
                 }
             }
         }
     }
     
-
     func repositionWindowUsingAppleScript(for app: NSRunningApplication, position: ScreenPosition.Third) {
         guard let appName = app.localizedName, let screen = NSScreen.main else {
-            print("Uygulama adı veya ana ekran alınamadı.")
+            print("Could not obtain the application name or the main screen.")
             return
         }
         
@@ -103,14 +97,12 @@ class WindowManager: ObservableObject {
             var error: NSDictionary?
             let result = appleScript.executeAndReturnError(&error)
             if let error = error {
-                print("AppleScript hatası: \(error)")
+                print("AppleScript error: \(error)")
             } else {
-                print("\(appName) uygulamasının penceresi \(newFrame) konumuna taşındı. Sonuç: \(result.stringValue ?? "Başarılı")")
+                print("\(appName)'s window moved to \(newFrame). Result: \(result.stringValue ?? "Success")")
             }
         }
     }
-
-
     
     func repositionAllWindowsIntoThirds(position: ScreenPosition.Third) {
         let apps = NSWorkspace.shared.runningApplications.filter { app in
@@ -128,11 +120,11 @@ class WindowManager: ObservableObject {
                     if AXUIElementCopyAttributeValue(window, kAXFrameAttribute, &frameValue) == .success,
                        let frame = frameValue as? CGRect {
                         
-                        // Hangi ekran üzerinde olduğunu tespit edelim
+                        // Determine which screen the window is on
                         let windowScreen = NSScreen.screens.first { $0.frame.intersects(frame) } ?? NSScreen.main!
                         let screenFrame = windowScreen.frame
                         
-                        // Ekranı üçe bölme hesaplaması (örneğin; sağ üçte için)
+                        // Calculate the window frame for a third of the screen (e.g., for the right third)
                         let thirdWidth = screenFrame.width / 3
                         let newX: CGFloat
                         switch position {
@@ -149,27 +141,26 @@ class WindowManager: ObservableObject {
                                               width: thirdWidth,
                                               height: screenFrame.height)
                         
-                        // Pencereyi yeni konuma taşıyalım
+                        // Move the window to the new position
                         let newPos = AXValue.from(value: newFrame.origin, type: .cgPoint)
                         let newSize = AXValue.from(value: newFrame.size, type: .cgSize)
                         AXUIElementSetAttributeValue(window, kAXPositionAttribute, newPos)
                         AXUIElementSetAttributeValue(window, kAXSizeAttribute, newSize)
                         
-                        print("\(app.localizedName ?? "Bilinmeyen") uygulamasının penceresi \(newFrame) konumuna taşındı.")
+                        print("\(app.localizedName ?? "Unknown")'s window moved to \(newFrame).")
                     } else {
-                        print("\(app.localizedName ?? "Bilinmeyen") uygulamasının pencere çerçevesi alınamadı.")
+                        print("Could not retrieve the frame for \(app.localizedName ?? "Unknown")'s window.")
                     }
                 }
             } else {
-                print("\(app.localizedName ?? "Bilinmeyen") uygulamasının pencere listesi alınamadı.")
+                print("Could not retrieve the window list for \(app.localizedName ?? "Unknown").")
             }
         }
     }
-
-
+    
     func repositionTextEditWindowToRightThird() {
         guard let screen = NSScreen.main else {
-            print("Ana ekran alınamadı.")
+            print("Main screen not found.")
             return
         }
         let screenFrame = screen.frame
@@ -194,42 +185,42 @@ class WindowManager: ObservableObject {
             var error: NSDictionary?
             let result = appleScript.executeAndReturnError(&error)
             if let error = error {
-                print("AppleScript hatası: \(error)")
+                print("AppleScript error: \(error)")
             } else {
-                print("TextEdit penceresi \(newFrame) konumuna taşındı. Sonuç: \(result.stringValue ?? "Başarılı")")
+                print("TextEdit window moved to \(newFrame). Result: \(result.stringValue ?? "Success")")
             }
         }
     }
-
+    
     func divideScreenIntoTwoThirds(position: ScreenPosition.TwoThirds) {
-            selectWindow {
-                guard let screen = self.currentScreen() else { return }
-                let screenFrame = screen.frame
-                
-                let twoThirdsWidth = (screenFrame.width / 3) * 2
-                let x: CGFloat
-                
-                switch position {
-                case .left:
-                    x = screenFrame.minX
-                case .right:
-                    x = screenFrame.minX + (screenFrame.width / 3)
-                }
-                
-                let frame = NSRect(x: x,
-                                 y: screenFrame.minY,
-                                 width: twoThirdsWidth,
-                                 height: screenFrame.height)
-                
-                self.moveActiveWindow(to: frame)
+        selectWindow {
+            guard let screen = self.currentScreen() else { return }
+            let screenFrame = screen.frame
+            
+            let twoThirdsWidth = (screenFrame.width / 3) * 2
+            let x: CGFloat
+            
+            switch position {
+            case .left:
+                x = screenFrame.minX
+            case .right:
+                x = screenFrame.minX + (screenFrame.width / 3)
             }
+            
+            let frame = NSRect(x: x,
+                               y: screenFrame.minY,
+                               width: twoThirdsWidth,
+                               height: screenFrame.height)
+            
+            self.moveActiveWindow(to: frame)
         }
-
+    }
+    
     func selectWindow(completion: @escaping () -> Void) {
-        // Sistemde önde olan uygulamayı alıyoruz
+        // Get the frontmost application in the system
         if let frontmostApp = NSWorkspace.shared.frontmostApplication,
            frontmostApp.bundleIdentifier != Bundle.main.bundleIdentifier {
-            // Eğer aktif uygulama bizim uygulamamız değilse, onu hedef alıyoruz
+            // If the active application is not our own, target it
             self.selectedApp = frontmostApp
             frontmostApp.activate(options: .activateIgnoringOtherApps)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
@@ -237,27 +228,27 @@ class WindowManager: ObservableObject {
                 completion()
             }
         } else if let _ = self.selectedApp {
-            // Eğer önde olan uygulama bizim uygulamamız ise (örneğin status bar’dan tıklandığında),
-            // daha önce seçilmiş olan pencereyi kullanmaya devam ediyoruz.
+            // If our application is frontmost (e.g., when clicked from the status bar),
+            // continue using the previously selected window.
             DispatchQueue.main.async {
                 self.updateActiveWindow()
                 completion()
             }
         } else {
-            // Eğer hiçbir geçerli pencere bulunamazsa, fallback olarak seçim diyalogu gösteriyoruz.
+            // If no valid window is found, show a fallback window selection dialog.
             let apps = NSWorkspace.shared.runningApplications.filter {
                 $0.activationPolicy == .regular && $0.bundleIdentifier != Bundle.main.bundleIdentifier
             }
             
             let alert = NSAlert()
-            alert.messageText = "Pencere Seçin"
-            alert.informativeText = "İşlem yapılacak pencereyi seçin"
+            alert.messageText = "Select a Window"
+            alert.informativeText = "Please select the window to operate on."
             for (index, app) in apps.enumerated() {
                 if let name = app.localizedName {
                     alert.addButton(withTitle: "\(index): \(name)")
                 }
             }
-            alert.addButton(withTitle: "İptal")
+            alert.addButton(withTitle: "Cancel")
             
             let response = alert.runModal()
             if response != .cancel {
@@ -273,7 +264,6 @@ class WindowManager: ObservableObject {
             }
         }
     }
-
     
     private func isAccessibilityEnabled() -> Bool {
         let options = [kAXTrustedCheckOptionPrompt.takeUnretainedValue() as String: false]
@@ -281,84 +271,79 @@ class WindowManager: ObservableObject {
     }
     
     private func updateActiveWindow() {
-        
         if !AXIsProcessTrusted() {
-                print("[DEBUG] Erişilebilirlik izni verilmemiş, izin isteniyor...")
-                let options = [kAXTrustedCheckOptionPrompt.takeUnretainedValue() as String: true]
-                let accessEnabled = AXIsProcessTrustedWithOptions(options as CFDictionary)
-                if !accessEnabled {
-                    print("[DEBUG] Erişilebilirlik izni reddedildi")
-                    return
-                }
+            print("[DEBUG] Accessibility permission not granted, requesting permission...")
+            let options = [kAXTrustedCheckOptionPrompt.takeUnretainedValue() as String: true]
+            let accessEnabled = AXIsProcessTrustedWithOptions(options as CFDictionary)
+            if !accessEnabled {
+                print("[DEBUG] Accessibility permission denied.")
+                return
             }
+        }
         
         guard let app = selectedApp else {
-            print("[DEBUG] updateActiveWindow: selectedApp nil.")
+            print("[DEBUG] updateActiveWindow: selectedApp is nil.")
             return
         }
-        print("[DEBUG] updateActiveWindow: Seçilen uygulama: \(app.localizedName ?? "Bilinmeyen") (PID: \(app.processIdentifier))")
+        print("[DEBUG] updateActiveWindow: Selected app: \(app.localizedName ?? "Unknown") (PID: \(app.processIdentifier))")
         let appRef = AXUIElementCreateApplication(app.processIdentifier)
         
         var window: CFTypeRef?
-        // İlk olarak odaklanmış pencere (AXFocusedWindow) deneniyor.
+        // First, try the focused window (AXFocusedWindow)
         let resultFocused = AXUIElementCopyAttributeValue(appRef, kAXFocusedWindowAttribute as CFString, &window)
-        print("[DEBUG] AXFocusedWindow sonucu: \(resultFocused.rawValue)")
+        print("[DEBUG] AXFocusedWindow result: \(resultFocused.rawValue)")
         
-        // Eğer AXFocusedWindow başarısız olursa, ana pencere (AXMainWindow) deneniyor.
+        // If AXFocusedWindow fails, try the main window (AXMainWindow)
         if resultFocused != .success || window == nil {
-            print("[DEBUG] Odaklı pencere alınamadı, AXMainWindow deneniyor.")
+            print("[DEBUG] Focused window not obtained, trying AXMainWindow.")
             let resultMain = AXUIElementCopyAttributeValue(appRef, "AXMainWindow" as CFString, &window)
-            print("[DEBUG] AXMainWindow sonucu: \(resultMain.rawValue)")
+            print("[DEBUG] AXMainWindow result: \(resultMain.rawValue)")
         }
         
-        // Yine window değeri alınamadıysa, AXWindows listesinden ilk pencereyi seçmeye çalışıyoruz.
+        // If still no window is obtained, try selecting the first window from AXWindows
         if window == nil {
-            print("[DEBUG] Odaklı ve ana pencere alınamadı, AXWindows deneniyor.")
+            print("[DEBUG] Neither focused nor main window obtained, trying AXWindows.")
             var windowList: CFTypeRef?
             let resultWindows = AXUIElementCopyAttributeValue(appRef, "AXWindows" as CFString, &windowList)
-            print("[DEBUG] AXWindows sonucu: \(resultWindows.rawValue)")
+            print("[DEBUG] AXWindows result: \(resultWindows.rawValue)")
             if resultWindows == .success, let windows = windowList as? [AXUIElement], !windows.isEmpty {
-                print("[DEBUG] \(windows.count) pencere bulundu, ilk pencere seçiliyor.")
+                print("[DEBUG] Found \(windows.count) windows, selecting the first one.")
                 window = windows[0]
             } else {
-                print("[DEBUG] AXWindows değeri alınamadı veya boş.")
+                print("[DEBUG] AXWindows value not obtained or empty.")
             }
         }
         
         if let window = window {
             activeWindow = window as! AXUIElement
-            print("[DEBUG] activeWindow güncellendi.")
+            print("[DEBUG] activeWindow updated.")
             var frameValue: CFTypeRef?
             let resultFrame = AXUIElementCopyAttributeValue(activeWindow!, kAXFrameAttribute as CFString, &frameValue)
-            print("[DEBUG] AXFrame sonucu: \(resultFrame.rawValue)")
+            print("[DEBUG] AXFrame result: \(resultFrame.rawValue)")
             if resultFrame == .success, let frame = frameValue as? CGRect {
-                print("[DEBUG] Güncellenen pencere çerçevesi: \(frame)")
+                print("[DEBUG] Updated window frame: \(frame)")
             } else {
-                print("[DEBUG] Pencere çerçevesi alınamadı.")
+                print("[DEBUG] Could not obtain window frame.")
             }
         } else {
-            print("[DEBUG] updateActiveWindow: Pencere bilgisi alınamadı.")
+            print("[DEBUG] updateActiveWindow: Could not obtain window information.")
         }
     }
-
-
-
     
     private func moveActiveWindow(to frame: NSRect) {
         guard let window = activeWindow else {
-            print("[DEBUG] moveActiveWindow: activeWindow nil, pencere taşınamıyor.")
+            print("[DEBUG] moveActiveWindow: activeWindow is nil, cannot move window.")
             return
         }
-        print("[DEBUG] Pencere taşınacak frame: \(frame)")
+        print("[DEBUG] Window will be moved to frame: \(frame)")
         var point = AXValue.from(value: frame.origin, type: .cgPoint)
         var size = AXValue.from(value: frame.size, type: .cgSize)
         
         let resultPos = AXUIElementSetAttributeValue(window, kAXPositionAttribute as CFString, point)
-        print("[DEBUG] Konum ayarlama sonucu: \(resultPos)")
+        print("[DEBUG] Position set result: \(resultPos)")
         let resultSize = AXUIElementSetAttributeValue(window, kAXSizeAttribute as CFString, size)
-        print("[DEBUG] Boyut ayarlama sonucu: \(resultSize)")
+        print("[DEBUG] Size set result: \(resultSize)")
     }
-
     
     func moveWindow(to frame: NSRect) {
         if !isAccessibilityEnabled() {
@@ -374,16 +359,17 @@ class WindowManager: ObservableObject {
             moveActiveWindow(to: frame)
         }
     }
-    // Ekranı üçe bölme
+    
+    // Divide the screen into thirds
     func divideScreenIntoThirds(position: ScreenPosition.Third) {
         selectWindow {
             guard let screen = self.currentScreen() else {
-                print("currentScreen döndüremedi, varsayılan olarak ana ekran kullanılıyor")
+                print("Could not determine current screen, defaulting to main screen.")
                 return
             }
             let screenFrame = screen.frame
-            print("Tespit edilen ekran çerçevesi: \(screenFrame)")
-
+            print("Detected screen frame: \(screenFrame)")
+            
             let width = screenFrame.width / 3
             let x: CGFloat
             switch position {
@@ -399,15 +385,13 @@ class WindowManager: ObservableObject {
                                y: screenFrame.minY,
                                width: width,
                                height: screenFrame.height)
-            print("Hesaplanan pencere çerçevesi: \(frame)")
+            print("Calculated window frame: \(frame)")
             
             self.moveActiveWindow(to: frame)
         }
     }
-
-
     
-    // İkiye bölme
+    // Divide the screen in half
     func divideScreenInHalf(position: ScreenPosition.Half) {
         selectWindow {
             guard let screen = self.currentScreen() else { return }
@@ -423,9 +407,8 @@ class WindowManager: ObservableObject {
             self.moveActiveWindow(to: frame)
         }
     }
-
     
-    // Köşelere taşıma
+    // Move the window to a corner
     func moveToCorner(position: ScreenPosition.Corner) {
         selectWindow {
             guard let screen = NSScreen.main else { return }
@@ -453,15 +436,15 @@ class WindowManager: ObservableObject {
             }
             
             let frame = NSRect(x: x,
-                             y: y,
-                             width: halfWidth,
-                             height: halfHeight)
+                               y: y,
+                               width: halfWidth,
+                               height: halfHeight)
             
             self.moveActiveWindow(to: frame)
         }
     }
     
-    // Dikey bölme
+    // Divide the screen vertically into two halves
     func divideScreenVertically(position: ScreenPosition.Vertical) {
         selectWindow {
             guard let screen = NSScreen.main else { return }
@@ -478,15 +461,15 @@ class WindowManager: ObservableObject {
             }
             
             let frame = NSRect(x: screenFrame.minX,
-                             y: y,
-                             width: screenFrame.width,
-                             height: height)
+                               y: y,
+                               width: screenFrame.width,
+                               height: height)
             
             self.moveActiveWindow(to: frame)
         }
     }
     
-    // Merkeze alma
+    // Center the window with an optional scale factor (default is 0.6)
     func centerWindow(withScale scale: CGFloat = 0.6) {
         selectWindow {
             guard let screen = NSScreen.main else { return }
@@ -503,45 +486,44 @@ class WindowManager: ObservableObject {
         }
     }
     
-    
     private func currentScreen() -> NSScreen? {
         if let window = activeWindow {
-            print("[DEBUG] currentScreen: activeWindow kullanılıyor.")
+            print("[DEBUG] currentScreen: using activeWindow.")
             var windowFrameValue: CFTypeRef?
             let result = AXUIElementCopyAttributeValue(window, kAXFrameAttribute as CFString, &windowFrameValue)
-            print("[DEBUG] currentScreen: AXFrame sonucu: \(result.rawValue)")
+            print("[DEBUG] currentScreen: AXFrame result: \(result.rawValue)")
             if result == .success, let windowFrame = windowFrameValue as? CGRect {
-                print("[DEBUG] currentScreen: Pencere çerçevesi: \(windowFrame)")
+                print("[DEBUG] currentScreen: Window frame: \(windowFrame)")
                 if let screen = NSScreen.screens.first(where: { $0.frame.intersects(windowFrame) }) {
-                    print("[DEBUG] currentScreen: Tespit edilen ekran: \(screen.frame)")
+                    print("[DEBUG] currentScreen: Detected screen: \(screen.frame)")
                     return screen
                 } else {
-                    print("[DEBUG] currentScreen: Pencere herhangi bir ekrana ait değil.")
+                    print("[DEBUG] currentScreen: Window does not belong to any screen.")
                 }
             }
         } else {
-            print("[DEBUG] currentScreen: activeWindow nil, ana ekran kullanılıyor.")
+            print("[DEBUG] currentScreen: activeWindow is nil, using main screen.")
         }
         return NSScreen.main
     }
-
-    // Tam ekran
+    
+    // Full screen
     func makeFullScreen() {
         selectWindow {
             guard let screen = NSScreen.main else { return }
             let screenFrame = screen.frame
             
             let frame = NSRect(x: screenFrame.minX,
-                             y: screenFrame.minY,
-                             width: screenFrame.width,
-                             height: screenFrame.height)
+                               y: screenFrame.minY,
+                               width: screenFrame.width,
+                               height: screenFrame.height)
             
             self.moveActiveWindow(to: frame)
         }
     }
 }
 
-// AXValue yardımcı extension
+// Helper extension for AXValue
 extension AXValue {
     static func from<T>(value: T, type: AXValueType) -> AXValue {
         var value = value

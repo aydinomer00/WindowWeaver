@@ -301,7 +301,9 @@
 				INFOPLIST_FILE = WindomWeaverr/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = WindowWeaver;
 				INFOPLIST_KEY_LSApplicationCategoryType = "Privacy - AppleEvents Sending Usage Description";
+				INFOPLIST_KEY_LSBackgroundOnly = YES;
 				INFOPLIST_KEY_LSUIElement = YES;
+				INFOPLIST_KEY_NSAppleEventsUsageDescription = "WindowWeaver needs AppleEvents permission to control window positions.";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSSystemAdministrationUsageDescription = "WindowWeaver needs permission to manage windows positions";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -333,7 +335,9 @@
 				INFOPLIST_FILE = WindomWeaverr/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = WindowWeaver;
 				INFOPLIST_KEY_LSApplicationCategoryType = "Privacy - AppleEvents Sending Usage Description";
+				INFOPLIST_KEY_LSBackgroundOnly = YES;
 				INFOPLIST_KEY_LSUIElement = YES;
+				INFOPLIST_KEY_NSAppleEventsUsageDescription = "WindowWeaver needs AppleEvents permission to control window positions.";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSSystemAdministrationUsageDescription = "WindowWeaver needs permission to manage windows positions";
 				LD_RUNPATH_SEARCH_PATHS = (

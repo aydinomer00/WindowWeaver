@@ -5,7 +5,6 @@
 //  Created by Ömer Murat Aydın on 7.02.2025.
 //
 
-// StatusBarView.swift
 import SwiftUI
 
 struct StatusBarView: View {
@@ -14,78 +13,78 @@ struct StatusBarView: View {
     var body: some View {
         VStack(spacing: 8) {
             Group {
-                // Üçe bölme seçenekleri
+                // Options for third split
                 HStack {
                     Button(action: { windowManager.divideScreenIntoThirds(position: .left) }) {
-                        Label("Sol 1/3", systemImage: "rectangle.lefthalf.filled")
+                        Label("Left 1/3", systemImage: "rectangle.lefthalf.filled")
                     }
                     Button(action: { windowManager.divideScreenIntoThirds(position: .center) }) {
-                        Label("Orta 1/3", systemImage: "rectangle.center.filled")
+                        Label("Center 1/3", systemImage: "rectangle.center.filled")
                     }
                     Button(action: { windowManager.divideScreenIntoThirds(position: .right) }) {
-                        Label("Sağ 1/3", systemImage: "rectangle.righthalf.filled")
+                        Label("Right 1/3", systemImage: "rectangle.righthalf.filled")
                     }
                 }
                 
                 Divider()
                 
-                // İkiye bölme seçenekleri
+                // Options for half split
                 HStack {
                     Button(action: { windowManager.divideScreenInHalf(position: .left) }) {
-                        Label("Sol Yarım", systemImage: "rectangle.lefthalf.filled")
+                        Label("Left Half", systemImage: "rectangle.lefthalf.filled")
                     }
                     Button(action: { windowManager.divideScreenInHalf(position: .right) }) {
-                        Label("Sağ Yarım", systemImage: "rectangle.righthalf.filled")
+                        Label("Right Half", systemImage: "rectangle.righthalf.filled")
                     }
                 }
                 
                 Divider()
                 
-                // Köşe seçenekleri
+                // Corner options
                 Grid {
                     GridRow {
                         Button(action: { windowManager.moveToCorner(position: .topLeft) }) {
-                            Label("Sol Üst", systemImage: "arrow.up.left.square")
+                            Label("Top Left", systemImage: "arrow.up.left.square")
                         }
                         Button(action: { windowManager.moveToCorner(position: .topRight) }) {
-                            Label("Sağ Üst", systemImage: "arrow.up.right.square")
+                            Label("Top Right", systemImage: "arrow.up.right.square")
                         }
                     }
                     GridRow {
                         Button(action: { windowManager.moveToCorner(position: .bottomLeft) }) {
-                            Label("Sol Alt", systemImage: "arrow.down.left.square")
+                            Label("Bottom Left", systemImage: "arrow.down.left.square")
                         }
                         Button(action: { windowManager.moveToCorner(position: .bottomRight) }) {
-                            Label("Sağ Alt", systemImage: "arrow.down.right.square")
+                            Label("Bottom Right", systemImage: "arrow.down.right.square")
                         }
                     }
                 }
                 
                 Divider()
                 
-                // Diğer seçenekler
+                // Other options
                 HStack {
                     Button(action: { windowManager.divideScreenVertically(position: .top) }) {
-                        Label("Üst Yarım", systemImage: "rectangle.tophalf.filled")
+                        Label("Top Half", systemImage: "rectangle.tophalf.filled")
                     }
                     Button(action: { windowManager.divideScreenVertically(position: .bottom) }) {
-                        Label("Alt Yarım", systemImage: "rectangle.bottomhalf.filled")
+                        Label("Bottom Half", systemImage: "rectangle.bottomhalf.filled")
                     }
                 }
                 
                 Button(action: { windowManager.makeFullScreen() }) {
-                    Label("Tam Ekran", systemImage: "rectangle.fill")
+                    Label("Full Screen", systemImage: "rectangle.fill")
                 }
                 
                 Button(action: { windowManager.centerWindow() }) {
-                    Label("Merkez", systemImage: "rectangle.center.filled")
+                    Label("Center", systemImage: "rectangle.center.filled")
                 }
             }
             .buttonStyle(.bordered)
             
             Divider()
             
-            Button("Çıkış") {
+            Button("Exit") {
                 NSApplication.shared.terminate(nil)
             }
         }

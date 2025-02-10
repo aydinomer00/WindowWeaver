@@ -5,7 +5,6 @@
 //  Created by Ömer Murat Aydın on 8.02.2025.
 //
 
-// KeyboardShortcuts.swift
 import Foundation
 import Carbon
 
@@ -18,7 +17,7 @@ class KeyboardShortcuts {
     }
     
     private func registerGlobalHotKeys() {
-        // Sol 2/3
+        // Left 2/3 split
         registerHotKey(
             id: 1,
             keyCode: UInt32(kVK_LeftArrow),
@@ -27,7 +26,7 @@ class KeyboardShortcuts {
             self?.windowManager.divideScreenIntoTwoThirds(position: .left)
         }
         
-        // Sağ 2/3
+        // Right 2/3 split
         registerHotKey(
             id: 2,
             keyCode: UInt32(kVK_RightArrow),
@@ -36,7 +35,7 @@ class KeyboardShortcuts {
             self?.windowManager.divideScreenIntoTwoThirds(position: .right)
         }
         
-        // Sol 1/3
+        // Left 1/3 split
         registerHotKey(
             id: 3,
             keyCode: UInt32(kVK_LeftArrow),
@@ -45,7 +44,7 @@ class KeyboardShortcuts {
             self?.windowManager.divideScreenIntoThirds(position: .left)
         }
         
-        // Orta 1/3
+        // Center 1/3 split
         registerHotKey(
             id: 4,
             keyCode: UInt32(kVK_DownArrow),
@@ -54,7 +53,7 @@ class KeyboardShortcuts {
             self?.windowManager.divideScreenIntoThirds(position: .center)
         }
         
-        // Sağ 1/3
+        // Right 1/3 split
         registerHotKey(
             id: 5,
             keyCode: UInt32(kVK_RightArrow),
@@ -63,7 +62,7 @@ class KeyboardShortcuts {
             self?.windowManager.divideScreenIntoThirds(position: .right)
         }
         
-        // Sol Yarım
+        // Left half split
         registerHotKey(
             id: 6,
             keyCode: UInt32(kVK_LeftArrow),
@@ -72,7 +71,7 @@ class KeyboardShortcuts {
             self?.windowManager.divideScreenInHalf(position: .left)
         }
         
-        // Sağ Yarım
+        // Right half split
         registerHotKey(
             id: 7,
             keyCode: UInt32(kVK_RightArrow),
@@ -81,7 +80,7 @@ class KeyboardShortcuts {
             self?.windowManager.divideScreenInHalf(position: .right)
         }
         
-        // Tam Ekran
+        // Full screen
         registerHotKey(
             id: 8,
             keyCode: UInt32(kVK_Return),
@@ -90,7 +89,7 @@ class KeyboardShortcuts {
             self?.windowManager.makeFullScreen()
         }
         
-        // Merkez
+        // Center window
         registerHotKey(
             id: 9,
             keyCode: UInt32(kVK_Space),
@@ -103,13 +102,13 @@ class KeyboardShortcuts {
     private func registerHotKey(id: Int, keyCode: UInt32, modifiers: UInt32, action: @escaping () -> Void) {
         var hotKeyRef: EventHotKeyRef?
         
-        // Kısayol için benzersiz ID oluştur
+        // Create a unique ID for the hot key
         let hotKeyID = EventHotKeyID(signature: OSType(id), id: UInt32(id))
         
-        // Kısayol callback'ini sakla
+        // Save the hot key callback
         HotKeyCallbacks.shared.callbacks[id] = action
         
-        // Kısayolu kaydet
+        // Register the hot key
         let status = RegisterEventHotKey(
             keyCode,
             modifiers,
@@ -120,12 +119,12 @@ class KeyboardShortcuts {
         )
         
         if status != noErr {
-            print("Kısayol kaydedilemedi: \(status)")
+            print("Failed to register hot key: \(status)")
         }
     }
 }
 
-// HotKeyCallbacks.swift - Callback'leri saklamak için yardımcı sınıf
+// HotKeyCallbacks.swift - Helper class to store callbacks
 class HotKeyCallbacks {
     static let shared = HotKeyCallbacks()
     var callbacks: [Int: () -> Void] = [:]
@@ -133,26 +132,26 @@ class HotKeyCallbacks {
     private init() {}
 }
 
-// AppDelegate.swift - Event handler eklemeliyiz
+// AppDelegate.swift - Install an event handler
 import Cocoa
 
 class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ notification: Notification) {
-        // Event handler'ı kaydet
+        // Install the event handler
         installEventHandler()
         
-        // Kısayolları başlat
+        // Initialize keyboard shortcuts
         _ = KeyboardShortcuts.shared
     }
     
     private func installEventHandler() {
-        // Event tiplerimizi tanımla
+        // Define the event type for hot key pressed events
         var eventType = EventTypeSpec(
             eventClass: OSType(kEventClassKeyboard),
             eventKind: UInt32(kEventHotKeyPressed)
         )
         
-        // Event handler'ı kaydet
+        // Install the event handler
         InstallEventHandler(
             GetEventDispatcherTarget(),
             { (_, event, _) -> OSStatus in
