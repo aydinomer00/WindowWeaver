@@ -7,7 +7,7 @@ struct ContentView: View {
     private var isCompactWidth: Bool { viewWidth < 700 }
 
     var body: some View {
-        GeometryReader { _ in
+        GeometryReader { _ in // There are cheaper/easier ways to stretch a view.
             ScrollView {
                 ZStack {
                     // Background gradient
@@ -21,7 +21,6 @@ struct ContentView: View {
                     )
                     .ignoresSafeArea()
 
-                    // Background pattern
                     BackgroundPattern()
 
                     VStack(spacing: isCompactWidth ? 16 : 24) {

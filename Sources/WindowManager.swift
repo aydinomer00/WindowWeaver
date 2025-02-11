@@ -96,45 +96,48 @@ class WindowManager: ObservableObject {
             var windowListRef: CFTypeRef?
             let result = AXUIElementCopyAttributeValue(appElement, "AXWindows" as CFString, &windowListRef)
 
-            if result == .success, let windows = windowListRef as? [AXUIElement] {
-                for window in windows {
-                    var frameValue: CFTypeRef?
-                    if AXUIElementCopyAttributeValue(window, kAXFrameAttribute, &frameValue) == .success,
-                       let frame = frameValue as? CGRect {
-                        // Determine which screen the window is on
-                        let windowScreen = NSScreen.screens.first { $0.frame.intersects(frame) } ?? NSScreen.main!
-                        let screenFrame = windowScreen.frame
-
-                        // Calculate the window frame for a third of the screen (e.g., for the right third)
-                        let thirdWidth = screenFrame.width / 3
-                        let newX: CGFloat
-                        switch position {
-                        case .left:
-                            newX = screenFrame.minX
-                        case .center:
-                            newX = screenFrame.minX + thirdWidth
-                        case .right:
-                            newX = screenFrame.minX + (thirdWidth * 2)
-                        }
-
-                        let newFrame = NSRect(x: newX,
-                                              y: screenFrame.minY,
-                                              width: thirdWidth,
-                                              height: screenFrame.height)
-
-                        // Move the window to the new position
-                        let newPos = AXValue.from(value: newFrame.origin, type: .cgPoint)
-                        let newSize = AXValue.from(value: newFrame.size, type: .cgSize)
-                        AXUIElementSetAttributeValue(window, kAXPositionAttribute, newPos)
-                        AXUIElementSetAttributeValue(window, kAXSizeAttribute, newSize)
-
-                        print("\(app.localizedName ?? "Unknown")'s window moved to \(newFrame).")
-                    } else {
-                        print("Could not retrieve the frame for \(app.localizedName ?? "Unknown")'s window.")
-                    }
-                }
-            } else {
+            guard result == .success, let windows = windowListRef as? [AXUIElement] else {
                 print("Could not retrieve the window list for \(app.localizedName ?? "Unknown").")
+                return
+            }
+            
+            for window in windows {
+                var frameValue: CFTypeRef?
+
+                guard AXUIElementCopyAttributeValue(window, kAXFrameAttribute, &frameValue) == .success,
+                      let frame = frameValue as? CGRect else {
+                    print("Could not retrieve the frame for \(app.localizedName ?? "Unknown")'s window.")
+                    return
+                }
+                
+                // Determine which screen the window is on
+                let windowScreen = NSScreen.screens.first { $0.frame.intersects(frame) } ?? NSScreen.main!
+                let screenFrame = windowScreen.frame
+
+                // Calculate the window frame for a third of the screen (e.g., for the right third)
+                let thirdWidth = screenFrame.width / 3
+                let newX: CGFloat
+                switch position {
+                case .left:
+                    newX = screenFrame.minX
+                case .center:
+                    newX = screenFrame.minX + thirdWidth
+                case .right:
+                    newX = screenFrame.minX + (thirdWidth * 2)
+                }
+
+                let newFrame = NSRect(x: newX,
+                                      y: screenFrame.minY,
+                                      width: thirdWidth,
+                                      height: screenFrame.height)
+
+                // Move the window to the new position
+                let newPos = AXValue.from(value: newFrame.origin, type: .cgPoint)
+                let newSize = AXValue.from(value: newFrame.size, type: .cgSize)
+                AXUIElementSetAttributeValue(window, kAXPositionAttribute, newPos)
+                AXUIElementSetAttributeValue(window, kAXSizeAttribute, newSize)
+
+                print("\(app.localizedName ?? "Unknown")'s window moved to \(newFrame).")
             }
         }
     }
@@ -209,7 +212,7 @@ class WindowManager: ObservableObject {
                 self.updateActiveWindow()
                 completion()
             }
-        } else if let _ = selectedApp {
+        } else if selectedApp != nil {
             // If our application is frontmost (e.g., when clicked from the status bar),
             // continue using the previously selected window.
             DispatchQueue.main.async {

@@ -9,7 +9,7 @@ import Cocoa
 import ServiceManagement
 import SwiftUI
 
-class StatusBarController: ObservableObject {
+class StatusBarController {
     static let shared = StatusBarController()
     private var statusItem: NSStatusItem?
     private let windowManager = WindowManager.shared
@@ -147,23 +147,20 @@ class StatusBarController: ObservableObject {
     }
 
     private func isLoginItemEnabled() -> Bool {
-        if let bundleIdentifier = Bundle.main.bundleIdentifier {
-            for app in NSWorkspace.shared.runningApplications {
-                if app.bundleIdentifier == bundleIdentifier {
-                    return true
-                }
-            }
+        guard let bundleIdentifier = Bundle.main.bundleIdentifier else { return false }
+        let matchedApplication = NSWorkspace.shared.runningApplications.first { application in
+            application.bundleIdentifier == bundleIdentifier
         }
-        return false
+        return matchedApplication != nil
     }
 
     @objc private func toggleLaunchAtLogin() {
-        if let bundleIdentifier = Bundle.main.bundleIdentifier {
-            let currentState = isLoginItemEnabled()
-            SMLoginItemSetEnabled(bundleIdentifier as CFString, !currentState)
-            if let menuItem = statusItem?.menu?.items.first(where: { $0.action == #selector(toggleLaunchAtLogin) }) {
-                menuItem.state = !currentState ? .on : .off
-            }
+        guard let bundleIdentifier = Bundle.main.bundleIdentifier else { return }
+        
+        let currentState = isLoginItemEnabled()
+        SMLoginItemSetEnabled(bundleIdentifier as CFString, !currentState)
+        if let menuItem = statusItem?.menu?.items.first(where: { $0.action == #selector(toggleLaunchAtLogin) }) {
+            menuItem.state = !currentState ? .on : .off
         }
     }
 
