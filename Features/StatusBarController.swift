@@ -179,83 +179,83 @@ class StatusBarController: ObservableObject {
     // 1/3 Split Actions
     @objc private func leftThird() {
         DispatchQueue.main.async {
-            self.windowManager.divideScreenIntoThirds(position: .left)
+            self.windowManager.resize(.third(.left))
         }
     }
     
     @objc private func centerThird() {
         DispatchQueue.main.async {
-            self.windowManager.divideScreenIntoThirds(position: .center)
+            self.windowManager.resize(.third(.center))
         }
     }
     
     @objc private func rightThird() {
         DispatchQueue.main.async {
-            self.windowManager.divideScreenIntoThirds(position: .right)
+            self.windowManager.resize(.third(.right))
         }
     }
     
     // Half Split Actions
     @objc private func leftHalf() {
         DispatchQueue.main.async {
-            self.windowManager.divideScreenInHalf(position: .left)
+            self.windowManager.resize(.half(.left))
         }
     }
     
     @objc private func rightHalf() {
         DispatchQueue.main.async {
-            self.windowManager.divideScreenInHalf(position: .right)
+            self.windowManager.resize(.half(.right))
         }
     }
     
     // Corner Actions
     @objc private func topLeft() {
         DispatchQueue.main.async {
-            self.windowManager.moveToCorner(position: .topLeft)
+            self.windowManager.resize(.corner(.topLeft))
         }
     }
     
     @objc private func topRight() {
         DispatchQueue.main.async {
-            self.windowManager.moveToCorner(position: .topRight)
+            self.windowManager.resize(.corner(.topRight))
         }
     }
     
     @objc private func bottomLeft() {
         DispatchQueue.main.async {
-            self.windowManager.moveToCorner(position: .bottomLeft)
+            self.windowManager.resize(.corner(.bottomLeft))
         }
     }
     
     @objc private func bottomRight() {
         DispatchQueue.main.async {
-            self.windowManager.moveToCorner(position: .bottomRight)
+            self.windowManager.resize(.corner(.bottomRight))
         }
     }
     
     // Vertical Split Actions
     @objc private func topHalf() {
         DispatchQueue.main.async {
-            self.windowManager.divideScreenVertically(position: .top)
+            self.windowManager.resize(.vertical(.top))
         }
     }
     
     @objc private func bottomHalf() {
         DispatchQueue.main.async {
-            self.windowManager.divideScreenVertically(position: .bottom)
+            self.windowManager.resize(.vertical(.bottom))
         }
     }
     
     // Other Actions
     @objc private func center() {
         DispatchQueue.main.async {
-            self.windowManager.centerWindow()
+            self.windowManager.resize(.generic(.center))
         }
     }
     
     @objc private func fullScreen() {
         DispatchQueue.main.async {
-            self.windowManager.makeFullScreen()
+            self.windowManager.resize(.generic(.fullScreen))
         }
     }
 }

@@ -6,7 +6,28 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		6997AA822D5B57E300572B10 /* ModernButtonConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6997AA7D2D5B57E300572B10 /* ModernButtonConfig.swift */; };
+		6997AA832D5B57E300572B10 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6997AA7F2D5B57E300572B10 /* ContentView.swift */; };
+		6997AA842D5B57E300572B10 /* ModernButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6997AA802D5B57E300572B10 /* ModernButton.swift */; };
+		6997AB382D5B7FE900572B10 /* ModernButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6997AB372D5B7FE900572B10 /* ModernButtonStyle.swift */; };
+		6997AB3B2D5B813A00572B10 /* WindowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6997AB392D5B813A00572B10 /* WindowManager.swift */; };
+		6997AB3D2D5B814A00572B10 /* ScreenPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6997AB3C2D5B814A00572B10 /* ScreenPosition.swift */; };
+		6997AB3F2D5B844400572B10 /* Theme+Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6997AB3E2D5B844400572B10 /* Theme+Colors.swift */; };
+		6997AB412D5B84A700572B10 /* ViewWidthKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6997AB402D5B84A700572B10 /* ViewWidthKey.swift */; };
+		6997AB442D5B84C200572B10 /* BackgroundPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6997AB432D5B84C200572B10 /* BackgroundPattern.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
+		6997AA7D2D5B57E300572B10 /* ModernButtonConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModernButtonConfig.swift; sourceTree = "<group>"; };
+		6997AA7F2D5B57E300572B10 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		6997AA802D5B57E300572B10 /* ModernButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModernButton.swift; sourceTree = "<group>"; };
+		6997AB372D5B7FE900572B10 /* ModernButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModernButtonStyle.swift; sourceTree = "<group>"; };
+		6997AB392D5B813A00572B10 /* WindowManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowManager.swift; sourceTree = "<group>"; };
+		6997AB3C2D5B814A00572B10 /* ScreenPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenPosition.swift; sourceTree = "<group>"; };
+		6997AB3E2D5B844400572B10 /* Theme+Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Theme+Colors.swift"; sourceTree = "<group>"; };
+		6997AB402D5B84A700572B10 /* ViewWidthKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewWidthKey.swift; sourceTree = "<group>"; };
+		6997AB432D5B84C200572B10 /* BackgroundPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundPattern.swift; sourceTree = "<group>"; };
 		D3EF74972D5A7F590001C487 /* WindomWeaverr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WindomWeaverr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -39,16 +60,6 @@
 			path = Features;
 			sourceTree = "<group>";
 		};
-		D3EF74E32D5A86090001C487 /* UI */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = UI;
-			sourceTree = "<group>";
-		};
-		D3EF74E42D5A86170001C487 /* Sources */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Sources;
-			sourceTree = "<group>";
-		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,11 +73,58 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6997AA812D5B57E300572B10 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				6997AB3E2D5B844400572B10 /* Theme+Colors.swift */,
+				6997AB422D5B84B600572B10 /* Content View */,
+				6997AB362D5B7FDE00572B10 /* Buttons */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		6997AB362D5B7FDE00572B10 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				6997AA802D5B57E300572B10 /* ModernButton.swift */,
+				6997AB372D5B7FE900572B10 /* ModernButtonStyle.swift */,
+				6997AA7D2D5B57E300572B10 /* ModernButtonConfig.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		6997AB3A2D5B813A00572B10 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				6997AB3C2D5B814A00572B10 /* ScreenPosition.swift */,
+				6997AB392D5B813A00572B10 /* WindowManager.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		6997AB422D5B84B600572B10 /* Content View */ = {
+			isa = PBXGroup;
+			children = (
+				6997AA7F2D5B57E300572B10 /* ContentView.swift */,
+				6997AB452D5B84D100572B10 /* Helpers */,
+			);
+			path = "Content View";
+			sourceTree = "<group>";
+		};
+		6997AB452D5B84D100572B10 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				6997AB432D5B84C200572B10 /* BackgroundPattern.swift */,
+				6997AB402D5B84A700572B10 /* ViewWidthKey.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		D3EF748E2D5A7F590001C487 = {
 			isa = PBXGroup;
 			children = (
-				D3EF74E42D5A86170001C487 /* Sources */,
-				D3EF74E32D5A86090001C487 /* UI */,
+				6997AB3A2D5B813A00572B10 /* Sources */,
+				6997AA812D5B57E300572B10 /* UI */,
 				D3EF74E02D5A85F30001C487 /* Features */,
 				D3EF74DF2D5A85E60001C487 /* Utils */,
 				D3EF74992D5A7F590001C487 /* WindomWeaverr */,
@@ -101,8 +159,6 @@
 				D3EF74992D5A7F590001C487 /* WindomWeaverr */,
 				D3EF74DF2D5A85E60001C487 /* Utils */,
 				D3EF74E02D5A85F30001C487 /* Features */,
-				D3EF74E32D5A86090001C487 /* UI */,
-				D3EF74E42D5A86170001C487 /* Sources */,
 			);
 			name = WindomWeaverr;
 			packageProductDependencies = (
@@ -160,6 +216,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6997AA822D5B57E300572B10 /* ModernButtonConfig.swift in Sources */,
+				6997AB442D5B84C200572B10 /* BackgroundPattern.swift in Sources */,
+				6997AB412D5B84A700572B10 /* ViewWidthKey.swift in Sources */,
+				6997AB382D5B7FE900572B10 /* ModernButtonStyle.swift in Sources */,
+				6997AA832D5B57E300572B10 /* ContentView.swift in Sources */,
+				6997AB3B2D5B813A00572B10 /* WindowManager.swift in Sources */,
+				6997AB3D2D5B814A00572B10 /* ScreenPosition.swift in Sources */,
+				6997AB3F2D5B844400572B10 /* Theme+Colors.swift in Sources */,
+				6997AA842D5B57E300572B10 /* ModernButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,12 +355,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = WindomWeaverr/WindomWeaverr.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WindomWeaverr/Preview Content\"";
-				DEVELOPMENT_TEAM = HUA8TA8398;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WindomWeaverr/Info.plist;
@@ -324,12 +389,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = WindomWeaverr/WindomWeaverr.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WindomWeaverr/Preview Content\"";
-				DEVELOPMENT_TEAM = HUA8TA8398;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WindomWeaverr/Info.plist;

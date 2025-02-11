@@ -23,7 +23,7 @@ class KeyboardShortcuts {
             keyCode: UInt32(kVK_LeftArrow),
             modifiers: UInt32(cmdKey | optionKey | shiftKey)
         ) { [weak self] in
-            self?.windowManager.divideScreenIntoTwoThirds(position: .left)
+            self?.windowManager.resize(.twoThirds(.left))
         }
         
         // Right 2/3 split
@@ -32,7 +32,7 @@ class KeyboardShortcuts {
             keyCode: UInt32(kVK_RightArrow),
             modifiers: UInt32(cmdKey | optionKey | shiftKey)
         ) { [weak self] in
-            self?.windowManager.divideScreenIntoTwoThirds(position: .right)
+            self?.windowManager.resize(.twoThirds(.right))
         }
         
         // Left 1/3 split
@@ -41,7 +41,7 @@ class KeyboardShortcuts {
             keyCode: UInt32(kVK_LeftArrow),
             modifiers: UInt32(cmdKey | shiftKey)
         ) { [weak self] in
-            self?.windowManager.divideScreenIntoThirds(position: .left)
+            self?.windowManager.resize(.third(.left))
         }
         
         // Center 1/3 split
@@ -50,7 +50,7 @@ class KeyboardShortcuts {
             keyCode: UInt32(kVK_DownArrow),
             modifiers: UInt32(cmdKey | shiftKey)
         ) { [weak self] in
-            self?.windowManager.divideScreenIntoThirds(position: .center)
+            self?.windowManager.resize(.third(.center))
         }
         
         // Right 1/3 split
@@ -59,7 +59,7 @@ class KeyboardShortcuts {
             keyCode: UInt32(kVK_RightArrow),
             modifiers: UInt32(cmdKey | shiftKey)
         ) { [weak self] in
-            self?.windowManager.divideScreenIntoThirds(position: .right)
+            self?.windowManager.resize(.third(.right))
         }
         
         // Left half split
@@ -68,7 +68,7 @@ class KeyboardShortcuts {
             keyCode: UInt32(kVK_LeftArrow),
             modifiers: UInt32(cmdKey | controlKey)
         ) { [weak self] in
-            self?.windowManager.divideScreenInHalf(position: .left)
+            self?.windowManager.resize(.half(.left))
         }
         
         // Right half split
@@ -77,7 +77,7 @@ class KeyboardShortcuts {
             keyCode: UInt32(kVK_RightArrow),
             modifiers: UInt32(cmdKey | controlKey)
         ) { [weak self] in
-            self?.windowManager.divideScreenInHalf(position: .right)
+            self?.windowManager.resize(.half(.right))
         }
         
         // Full screen
@@ -86,7 +86,7 @@ class KeyboardShortcuts {
             keyCode: UInt32(kVK_Return),
             modifiers: UInt32(cmdKey | controlKey)
         ) { [weak self] in
-            self?.windowManager.makeFullScreen()
+            self?.windowManager.resize(.generic(.fullScreen))
         }
         
         // Center window
@@ -95,7 +95,7 @@ class KeyboardShortcuts {
             keyCode: UInt32(kVK_Space),
             modifiers: UInt32(cmdKey | controlKey)
         ) { [weak self] in
-            self?.windowManager.centerWindow()
+            self?.windowManager.resize(.generic(.center))
         }
     }
     

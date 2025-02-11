@@ -13,28 +13,6 @@ let kAXFrameAttribute: CFString = "AXFrame" as CFString
 let kAXSizeAttribute: CFString = "AXSize" as CFString
 let kAXPositionAttribute: CFString = "AXPosition" as CFString
 
-enum ScreenPosition {
-    enum Corner {
-        case topLeft, topRight, bottomLeft, bottomRight
-    }
-    
-    enum Half {
-        case left, right
-    }
-    
-    enum Third {
-        case left, center, right
-    }
-    
-    enum TwoThirds {
-        case left, right
-    }
-    
-    enum Vertical {
-        case top, bottom
-    }
-}
-
 class WindowManager: ObservableObject {
     static let shared = WindowManager()
     private var selectedApp: NSRunningApplication?
@@ -44,21 +22,24 @@ class WindowManager: ObservableObject {
         checkAccessibilityPermissions()
     }
     
-    private func checkAccessibilityPermissions() {
-        let options = [kAXTrustedCheckOptionPrompt.takeUnretainedValue() as String: false]
-        let accessEnabled = AXIsProcessTrustedWithOptions(options as CFDictionary)
-        
-        if !accessEnabled {
-            let alert = NSAlert()
-            alert.messageText = "Accessibility Permission Required"
-            alert.informativeText = "This application needs accessibility permission to work properly. Please grant permission in System Settings > Privacy & Security > Accessibility."
-            alert.addButton(withTitle: "Open Settings")
-            alert.addButton(withTitle: "Cancel")
-            
-            if alert.runModal() == .alertFirstButtonReturn {
-                if let url = URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_Accessibility") {
-                    NSWorkspace.shared.open(url)
-                }
+    func resize(_ screenPosition: ScreenPosition) {
+        switch screenPosition {
+        case let .corner(corner):
+            moveToCorner(position: corner)
+        case let .half(half):
+            divideScreenInHalf(position: half)
+        case let .third(third):
+            divideScreenIntoThirds(position: third)
+        case let .twoThirds(twoThirds):
+            divideScreenIntoTwoThirds(position: twoThirds)
+        case let .vertical(vertical):
+            divideScreenVertically(position: vertical)
+        case let .generic(generic):
+            switch generic {
+            case .center:
+                centerWindow()
+            case .fullScreen:
+                makeFullScreen()
             }
         }
     }
@@ -265,6 +246,25 @@ class WindowManager: ObservableObject {
         }
     }
     
+    private func checkAccessibilityPermissions() {
+        let options = [kAXTrustedCheckOptionPrompt.takeUnretainedValue() as String: false]
+        let accessEnabled = AXIsProcessTrustedWithOptions(options as CFDictionary)
+        
+        guard !accessEnabled else { return }
+        
+        let alert = NSAlert()
+        alert.messageText = "Accessibility Permission Required"
+        alert.informativeText = "This application needs accessibility permission to work properly. Please grant permission in System Settings > Privacy & Security > Accessibility."
+        alert.addButton(withTitle: "Open Settings")
+        alert.addButton(withTitle: "Cancel")
+        
+        if alert.runModal() == .alertFirstButtonReturn {
+            if let url = URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_Accessibility") {
+                NSWorkspace.shared.open(url)
+            }
+        }
+    }
+    
     private func isAccessibilityEnabled() -> Bool {
         let options = [kAXTrustedCheckOptionPrompt.takeUnretainedValue() as String: false]
         return AXIsProcessTrustedWithOptions(options as CFDictionary)
@@ -336,8 +336,8 @@ class WindowManager: ObservableObject {
             return
         }
         print("[DEBUG] Window will be moved to frame: \(frame)")
-        var point = AXValue.from(value: frame.origin, type: .cgPoint)
-        var size = AXValue.from(value: frame.size, type: .cgSize)
+        let point = AXValue.from(value: frame.origin, type: .cgPoint)
+        let size = AXValue.from(value: frame.size, type: .cgSize)
         
         let resultPos = AXUIElementSetAttributeValue(window, kAXPositionAttribute as CFString, point)
         print("[DEBUG] Position set result: \(resultPos)")
@@ -360,7 +360,43 @@ class WindowManager: ObservableObject {
         }
     }
     
-    // Divide the screen into thirds
+    private func currentScreen() -> NSScreen? {
+        if let window = activeWindow {
+            print("[DEBUG] currentScreen: using activeWindow.")
+            var windowFrameValue: CFTypeRef?
+            let result = AXUIElementCopyAttributeValue(window, kAXFrameAttribute as CFString, &windowFrameValue)
+            print("[DEBUG] currentScreen: AXFrame result: \(result.rawValue)")
+            if result == .success, let windowFrame = windowFrameValue as? CGRect {
+                print("[DEBUG] currentScreen: Window frame: \(windowFrame)")
+                if let screen = NSScreen.screens.first(where: { $0.frame.intersects(windowFrame) }) {
+                    print("[DEBUG] currentScreen: Detected screen: \(screen.frame)")
+                    return screen
+                } else {
+                    print("[DEBUG] currentScreen: Window does not belong to any screen.")
+                }
+            }
+        } else {
+            print("[DEBUG] currentScreen: activeWindow is nil, using main screen.")
+        }
+        return NSScreen.main
+    }
+}
+
+private extension WindowManager {
+    func makeFullScreen() {
+        selectWindow {
+            guard let screen = NSScreen.main else { return }
+            let screenFrame = screen.frame
+            
+            let frame = NSRect(x: screenFrame.minX,
+                               y: screenFrame.minY,
+                               width: screenFrame.width,
+                               height: screenFrame.height)
+            
+            self.moveActiveWindow(to: frame)
+        }
+    }
+    
     func divideScreenIntoThirds(position: ScreenPosition.Third) {
         selectWindow {
             guard let screen = self.currentScreen() else {
@@ -391,7 +427,6 @@ class WindowManager: ObservableObject {
         }
     }
     
-    // Divide the screen in half
     func divideScreenInHalf(position: ScreenPosition.Half) {
         selectWindow {
             guard let screen = self.currentScreen() else { return }
@@ -408,7 +443,6 @@ class WindowManager: ObservableObject {
         }
     }
     
-    // Move the window to a corner
     func moveToCorner(position: ScreenPosition.Corner) {
         selectWindow {
             guard let screen = NSScreen.main else { return }
@@ -444,7 +478,6 @@ class WindowManager: ObservableObject {
         }
     }
     
-    // Divide the screen vertically into two halves
     func divideScreenVertically(position: ScreenPosition.Vertical) {
         selectWindow {
             guard let screen = NSScreen.main else { return }
@@ -469,7 +502,6 @@ class WindowManager: ObservableObject {
         }
     }
     
-    // Center the window with an optional scale factor (default is 0.6)
     func centerWindow(withScale scale: CGFloat = 0.6) {
         selectWindow {
             guard let screen = NSScreen.main else { return }
@@ -485,45 +517,8 @@ class WindowManager: ObservableObject {
             self.moveActiveWindow(to: frame)
         }
     }
-    
-    private func currentScreen() -> NSScreen? {
-        if let window = activeWindow {
-            print("[DEBUG] currentScreen: using activeWindow.")
-            var windowFrameValue: CFTypeRef?
-            let result = AXUIElementCopyAttributeValue(window, kAXFrameAttribute as CFString, &windowFrameValue)
-            print("[DEBUG] currentScreen: AXFrame result: \(result.rawValue)")
-            if result == .success, let windowFrame = windowFrameValue as? CGRect {
-                print("[DEBUG] currentScreen: Window frame: \(windowFrame)")
-                if let screen = NSScreen.screens.first(where: { $0.frame.intersects(windowFrame) }) {
-                    print("[DEBUG] currentScreen: Detected screen: \(screen.frame)")
-                    return screen
-                } else {
-                    print("[DEBUG] currentScreen: Window does not belong to any screen.")
-                }
-            }
-        } else {
-            print("[DEBUG] currentScreen: activeWindow is nil, using main screen.")
-        }
-        return NSScreen.main
-    }
-    
-    // Full screen
-    func makeFullScreen() {
-        selectWindow {
-            guard let screen = NSScreen.main else { return }
-            let screenFrame = screen.frame
-            
-            let frame = NSRect(x: screenFrame.minX,
-                               y: screenFrame.minY,
-                               width: screenFrame.width,
-                               height: screenFrame.height)
-            
-            self.moveActiveWindow(to: frame)
-        }
-    }
 }
 
-// Helper extension for AXValue
 extension AXValue {
     static func from<T>(value: T, type: AXValueType) -> AXValue {
         var value = value
