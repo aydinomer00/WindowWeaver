@@ -1,5 +1,7 @@
-![image](https://github.com/user-attachments/assets/b954d3b4-de9a-4485-9736-cd11e9fba026)# WindowWeaver 🪟
+# WindowWeaver 🪟
 
+
+![image](https://github.com/user-attachments/assets/b954d3b4-de9a-4485-9736-cd11e9fba026)
 
 
 WindowWeaver is a powerful and intuitive window management tool designed for macOS. It helps you organize your workspace quickly and efficiently.
@@ -48,8 +50,11 @@ Launch the app and grant the necessary permissions
 🔒 Privacy & Security
 
 -Notarized by Apple
+
 -Uses only the necessary system permissions
+
 -Does not require an internet connection
+
 -Does not collect any data
 
 🤝 Contribute
