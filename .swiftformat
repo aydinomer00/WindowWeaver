@@ -1,0 +1,10 @@
+--exclude **/Pods
+--exclude **/DerivedData
+--exclude **/Build
+
+# Thiese rules clashes with SwiftLint.
+--disable wrapMultilineStatementBraces
+--disable trailingCommas
+
+# Wrapping
+--maxwidth 120

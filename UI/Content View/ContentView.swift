@@ -3,38 +3,38 @@ import SwiftUI
 struct ContentView: View {
     let windowManager = WindowManager.shared
     @State private var viewWidth: CGFloat = 0
-    
+
     private var isCompactWidth: Bool { viewWidth < 700 }
-    
+
     var body: some View {
-        GeometryReader { geometry in
+        GeometryReader { _ in
             ScrollView {
                 ZStack {
                     // Background gradient
                     LinearGradient(
                         colors: [
                             Color.background,
-                            Color.background.opacity(0.8)
+                            Color.background.opacity(0.8),
                         ],
                         startPoint: .topLeading,
                         endPoint: .bottomTrailing
                     )
                     .ignoresSafeArea()
-                    
+
                     // Background pattern
                     BackgroundPattern()
-                    
+
                     VStack(spacing: isCompactWidth ? 16 : 24) {
                         // Title section
                         titleSection
                             .padding(.top, isCompactWidth ? 16 : 24)
-                        
+
                         if isCompactWidth {
                             compactLayout
                         } else {
                             regularLayout
                         }
-                        
+
                         // Shortcuts section
                         shortcutsSection
                             .padding(.vertical, isCompactWidth ? 16 : 24)
@@ -69,13 +69,13 @@ private extension ContentView {
                         endPoint: .trailing
                     )
                 )
-            
+
             Text("Advanced Window Management")
                 .font(.custom("SF Pro Text", size: isCompactWidth ? 16 : 18))
                 .foregroundColor(.textSecondary)
         }
     }
-    
+
     var compactLayout: some View {
         VStack(spacing: 20) {
             // Corner Controls
@@ -90,32 +90,32 @@ private extension ContentView {
                     button(for: .corner(.bottomRight))
                 }
             }
-            
+
             sectionTitle("Vertical Split")
             HStack(spacing: 12) {
                 button(for: .vertical(.top))
                 button(for: .vertical(.bottom))
             }
-            
+
             sectionTitle("2/3 Split")
             HStack(spacing: 12) {
                 button(for: .twoThirds(.left))
                 button(for: .twoThirds(.right))
             }
-            
+
             sectionTitle("Third Split")
             VStack(spacing: 12) {
                 button(for: .third(.left))
                 button(for: .third(.center))
                 button(for: .third(.right))
             }
-            
+
             sectionTitle("Half Split")
             VStack(spacing: 12) {
                 button(for: .half(.left))
                 button(for: .half(.right))
             }
-            
+
             sectionTitle("Other")
             VStack(spacing: 12) {
                 button(for: .generic(.center))
@@ -123,7 +123,7 @@ private extension ContentView {
             }
         }
     }
-    
+
     var regularLayout: some View {
         HStack(alignment: .top, spacing: 32) {
             // Left column
@@ -139,20 +139,20 @@ private extension ContentView {
                         button(for: .corner(.bottomRight))
                     }
                 }
-                
+
                 sectionTitle("Vertical Split")
                 HStack(spacing: 16) {
                     button(for: .vertical(.top))
                     button(for: .vertical(.bottom))
                 }
-                
+
                 sectionTitle("2/3 Split")
                 HStack(spacing: 16) {
                     button(for: .twoThirds(.left))
                     button(for: .twoThirds(.right))
                 }
             }
-            
+
             // Middle column
             VStack(spacing: 20) {
                 sectionTitle("Third Split")
@@ -162,7 +162,7 @@ private extension ContentView {
                     button(for: .third(.right))
                 }
             }
-            
+
             // Right column
             VStack(spacing: 20) {
                 sectionTitle("Half Split")
@@ -170,7 +170,7 @@ private extension ContentView {
                     button(for: .half(.left))
                     button(for: .half(.right))
                 }
-                
+
                 sectionTitle("Other")
                 VStack(spacing: 16) {
                     button(for: .generic(.center))
@@ -180,13 +180,13 @@ private extension ContentView {
         }
         .padding(.horizontal)
     }
-    
+
     var shortcutsSection: some View {
         VStack(spacing: 16) {
             Text("Keyboard Shortcuts")
                 .font(.custom("SF Pro Text", size: isCompactWidth ? 16 : 18))
                 .foregroundColor(.textSecondary)
-            
+
             if isCompactWidth {
                 // Compact shortcuts layout
                 VStack(spacing: 8) {
@@ -242,13 +242,13 @@ private extension ContentView {
                 )
         )
     }
-    
+
     func button(for screenPosition: ScreenPosition) -> some View {
         ModernButton(configuration: .config(for: screenPosition)) {
             windowManager.resize(screenPosition)
         }
     }
-    
+
     func shortcutRow(_ title: String, _ shortcut: String) -> some View {
         HStack {
             Text(title)
@@ -256,7 +256,7 @@ private extension ContentView {
             shortcutView(text: shortcut)
         }
     }
-    
+
     func shortcutView(text: String) -> some View {
         Text(text)
             .padding(.horizontal, 12)
@@ -270,7 +270,7 @@ private extension ContentView {
                     )
             )
     }
-    
+
     func sectionTitle(_ title: String) -> some View {
         Text(title)
             .font(.custom("SF Pro Text", size: 16))

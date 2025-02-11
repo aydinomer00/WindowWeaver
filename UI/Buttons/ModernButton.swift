@@ -5,12 +5,12 @@ typealias ModernButtonAction = () -> Void
 struct ModernButton: View {
     private let configuration: ModernButtonConfig
     private let action: ModernButtonAction
-    
+
     init(configuration: ModernButtonConfig, action: @escaping ModernButtonAction) {
         self.configuration = configuration
         self.action = action
     }
-    
+
     var body: some View {
         Button(action: action, label: label)
             .buttonStyle(ModernButtonStyle())

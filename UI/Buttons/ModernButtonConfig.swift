@@ -55,7 +55,7 @@ private extension ModernButtonConfig {
             return .init(title: "Right 1/3", systemIconName: "rectangle.righthalf.filled")
         }
     }
-    
+
     static func config(for position: ScreenPosition.TwoThirds) -> ModernButtonConfig {
         switch position {
         case .left:
@@ -64,7 +64,7 @@ private extension ModernButtonConfig {
             return .init(title: "Right 2/3", systemIconName: "rectangle.righthalf.inset.filled")
         }
     }
-    
+
     static func config(for position: ScreenPosition.Vertical) -> ModernButtonConfig {
         switch position {
         case .top:
@@ -73,7 +73,7 @@ private extension ModernButtonConfig {
             return .init(title: "Bottom Half", systemIconName: "rectangle.bottomhalf.filled")
         }
     }
-    
+
     static func config(for position: ScreenPosition.Generic) -> ModernButtonConfig {
         switch position {
         case .center:

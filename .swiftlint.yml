@@ -1,0 +1,5 @@
+reporter: "xcode"
+
+disabled_rules:
+    - force_cast
+    - identifier_name

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct StatusBarView: View {
     let windowManager = WindowManager.shared
-    
+
     var body: some View {
         VStack(spacing: 8) {
             Group {
@@ -25,9 +25,9 @@ struct StatusBarView: View {
                         Label("Right 1/3", systemImage: "rectangle.righthalf.filled")
                     }
                 }
-                
+
                 Divider()
-                
+
                 // Options for half split
                 HStack {
                     Button(action: { windowManager.resize(.half(.left)) }) {
@@ -37,9 +37,9 @@ struct StatusBarView: View {
                         Label("Right Half", systemImage: "rectangle.righthalf.filled")
                     }
                 }
-                
+
                 Divider()
-                
+
                 // Corner options
                 Grid {
                     GridRow {
@@ -54,14 +54,14 @@ struct StatusBarView: View {
                         Button(action: { windowManager.resize(.corner(.bottomLeft)) }) {
                             Label("Bottom Left", systemImage: "arrow.down.left.square")
                         }
-                        Button(action: {windowManager.resize(.corner(.bottomRight)) }) {
+                        Button(action: { windowManager.resize(.corner(.bottomRight)) }) {
                             Label("Bottom Right", systemImage: "arrow.down.right.square")
                         }
                     }
                 }
-                
+
                 Divider()
-                
+
                 // Other options
                 HStack {
                     Button(action: { windowManager.resize(.vertical(.top)) }) {
@@ -71,19 +71,19 @@ struct StatusBarView: View {
                         Label("Bottom Half", systemImage: "rectangle.bottomhalf.filled")
                     }
                 }
-                
+
                 Button(action: { windowManager.resize(.generic(.fullScreen)) }) {
                     Label("Full Screen", systemImage: "rectangle.fill")
                 }
-                
+
                 Button(action: { windowManager.resize(.generic(.center)) }) {
                     Label("Center", systemImage: "rectangle.center.filled")
                 }
             }
             .buttonStyle(.bordered)
-            
+
             Divider()
-            
+
             Button("Exit") {
                 NSApplication.shared.terminate(nil)
             }
