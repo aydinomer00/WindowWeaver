@@ -16,6 +16,22 @@
 		6997AB3F2D5B844400572B10 /* Theme+Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6997AB3E2D5B844400572B10 /* Theme+Colors.swift */; };
 		6997AB412D5B84A700572B10 /* ViewWidthKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6997AB402D5B84A700572B10 /* ViewWidthKey.swift */; };
 		6997AB442D5B84C200572B10 /* BackgroundPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6997AB432D5B84C200572B10 /* BackgroundPattern.swift */; };
+		6997AB5D2D5BC4C100572B10 /* WindowWeaverrApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6997AB5B2D5BC4C100572B10 /* WindowWeaverrApp.swift */; };
+		6997AB5E2D5BC4C100572B10 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 6997AB492D5BC4C100572B10 /* .gitignore */; };
+		6997AB5F2D5BC4C100572B10 /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = 6997AB4A2D5BC4C100572B10 /* CHANGELOG.md */; };
+		6997AB602D5BC4C100572B10 /* CONTRIBUTING.md in Resources */ = {isa = PBXBuildFile; fileRef = 6997AB4B2D5BC4C100572B10 /* CONTRIBUTING.md */; };
+		6997AB612D5BC4C100572B10 /* LICENSE (MIT) in Resources */ = {isa = PBXBuildFile; fileRef = 6997AB4C2D5BC4C100572B10 /* LICENSE (MIT) */; };
+		6997AB622D5BC4C100572B10 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 6997AB4D2D5BC4C100572B10 /* README.md */; };
+		6997AB642D5BC4C100572B10 /* Ekran Resmi 2025-02-09 15.36.53.png in Resources */ = {isa = PBXBuildFile; fileRef = 6997AB512D5BC4C100572B10 /* Ekran Resmi 2025-02-09 15.36.53.png */; };
+		6997AB652D5BC4C100572B10 /* Ekran Resmi 2025-02-09 15.45.05.png in Resources */ = {isa = PBXBuildFile; fileRef = 6997AB522D5BC4C100572B10 /* Ekran Resmi 2025-02-09 15.45.05.png */; };
+		6997AB662D5BC4C100572B10 /* Ekran Resmi 2025-02-09 15.45.16.png in Resources */ = {isa = PBXBuildFile; fileRef = 6997AB532D5BC4C100572B10 /* Ekran Resmi 2025-02-09 15.45.16.png */; };
+		6997AB672D5BC4C100572B10 /* Ekran Resmi 2025-02-09 15.45.38.png in Resources */ = {isa = PBXBuildFile; fileRef = 6997AB542D5BC4C100572B10 /* Ekran Resmi 2025-02-09 15.45.38.png */; };
+		6997AB682D5BC4C100572B10 /* Ekran Resmi 2025-02-09 15.46.29.png in Resources */ = {isa = PBXBuildFile; fileRef = 6997AB552D5BC4C100572B10 /* Ekran Resmi 2025-02-09 15.46.29.png */; };
+		6997AB692D5BC4C100572B10 /* Ekran Resmi 2025-02-09 15.47.04.png in Resources */ = {isa = PBXBuildFile; fileRef = 6997AB562D5BC4C100572B10 /* Ekran Resmi 2025-02-09 15.47.04.png */; };
+		6997AB6A2D5BC4C100572B10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6997AB582D5BC4C100572B10 /* Assets.xcassets */; };
+		6997AB6E2D5BC4D500572B10 /* KeyboardShortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6997AB6C2D5BC4D500572B10 /* KeyboardShortcuts.swift */; };
+		6997AB722D5BC4D800572B10 /* StatusBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6997AB6F2D5BC4D800572B10 /* StatusBarController.swift */; };
+		6997AB732D5BC4D800572B10 /* StatusBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6997AB702D5BC4D800572B10 /* StatusBarView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,39 +44,26 @@
 		6997AB3E2D5B844400572B10 /* Theme+Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Theme+Colors.swift"; sourceTree = "<group>"; };
 		6997AB402D5B84A700572B10 /* ViewWidthKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewWidthKey.swift; sourceTree = "<group>"; };
 		6997AB432D5B84C200572B10 /* BackgroundPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundPattern.swift; sourceTree = "<group>"; };
-		D3EF74972D5A7F590001C487 /* WindomWeaverr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WindomWeaverr.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6997AB492D5BC4C100572B10 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		6997AB4A2D5BC4C100572B10 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
+		6997AB4B2D5BC4C100572B10 /* CONTRIBUTING.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CONTRIBUTING.md; sourceTree = "<group>"; };
+		6997AB4C2D5BC4C100572B10 /* LICENSE (MIT) */ = {isa = PBXFileReference; lastKnownFileType = text; path = "LICENSE (MIT)"; sourceTree = "<group>"; };
+		6997AB4D2D5BC4C100572B10 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		6997AB512D5BC4C100572B10 /* Ekran Resmi 2025-02-09 15.36.53.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Ekran Resmi 2025-02-09 15.36.53.png"; sourceTree = "<group>"; };
+		6997AB522D5BC4C100572B10 /* Ekran Resmi 2025-02-09 15.45.05.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Ekran Resmi 2025-02-09 15.45.05.png"; sourceTree = "<group>"; };
+		6997AB532D5BC4C100572B10 /* Ekran Resmi 2025-02-09 15.45.16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Ekran Resmi 2025-02-09 15.45.16.png"; sourceTree = "<group>"; };
+		6997AB542D5BC4C100572B10 /* Ekran Resmi 2025-02-09 15.45.38.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Ekran Resmi 2025-02-09 15.45.38.png"; sourceTree = "<group>"; };
+		6997AB552D5BC4C100572B10 /* Ekran Resmi 2025-02-09 15.46.29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Ekran Resmi 2025-02-09 15.46.29.png"; sourceTree = "<group>"; };
+		6997AB562D5BC4C100572B10 /* Ekran Resmi 2025-02-09 15.47.04.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Ekran Resmi 2025-02-09 15.47.04.png"; sourceTree = "<group>"; };
+		6997AB582D5BC4C100572B10 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6997AB592D5BC4C100572B10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6997AB5A2D5BC4C100572B10 /* WindowWeaverr.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WindowWeaverr.entitlements; sourceTree = "<group>"; };
+		6997AB5B2D5BC4C100572B10 /* WindowWeaverrApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowWeaverrApp.swift; sourceTree = "<group>"; };
+		6997AB6C2D5BC4D500572B10 /* KeyboardShortcuts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardShortcuts.swift; sourceTree = "<group>"; };
+		6997AB6F2D5BC4D800572B10 /* StatusBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarController.swift; sourceTree = "<group>"; };
+		6997AB702D5BC4D800572B10 /* StatusBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarView.swift; sourceTree = "<group>"; };
+		D3EF74972D5A7F590001C487 /* WindowWeaverr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WindowWeaverr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		D3EF74B22D5A80730001C487 /* Exceptions for "WindomWeaverr" folder in "WindomWeaverr" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = D3EF74962D5A7F590001C487 /* WindomWeaverr */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		D3EF74992D5A7F590001C487 /* WindomWeaverr */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				D3EF74B22D5A80730001C487 /* Exceptions for "WindomWeaverr" folder in "WindomWeaverr" target */,
-			);
-			path = WindomWeaverr;
-			sourceTree = "<group>";
-		};
-		D3EF74DF2D5A85E60001C487 /* Utils */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Utils;
-			sourceTree = "<group>";
-		};
-		D3EF74E02D5A85F30001C487 /* Features */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Features;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		D3EF74942D5A7F590001C487 /* Frameworks */ = {
@@ -120,14 +123,69 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		6997AB4E2D5BC4C100572B10 /* Documentation */ = {
+			isa = PBXGroup;
+			children = (
+				6997AB492D5BC4C100572B10 /* .gitignore */,
+				6997AB4A2D5BC4C100572B10 /* CHANGELOG.md */,
+				6997AB4B2D5BC4C100572B10 /* CONTRIBUTING.md */,
+				6997AB4C2D5BC4C100572B10 /* LICENSE (MIT) */,
+				6997AB4D2D5BC4C100572B10 /* README.md */,
+			);
+			path = Documentation;
+			sourceTree = "<group>";
+		};
+		6997AB572D5BC4C100572B10 /* ScreenShots */ = {
+			isa = PBXGroup;
+			children = (
+				6997AB512D5BC4C100572B10 /* Ekran Resmi 2025-02-09 15.36.53.png */,
+				6997AB522D5BC4C100572B10 /* Ekran Resmi 2025-02-09 15.45.05.png */,
+				6997AB532D5BC4C100572B10 /* Ekran Resmi 2025-02-09 15.45.16.png */,
+				6997AB542D5BC4C100572B10 /* Ekran Resmi 2025-02-09 15.45.38.png */,
+				6997AB552D5BC4C100572B10 /* Ekran Resmi 2025-02-09 15.46.29.png */,
+				6997AB562D5BC4C100572B10 /* Ekran Resmi 2025-02-09 15.47.04.png */,
+			);
+			path = ScreenShots;
+			sourceTree = "<group>";
+		};
+		6997AB5C2D5BC4C100572B10 /* WindowWeaverr */ = {
+			isa = PBXGroup;
+			children = (
+				6997AB4E2D5BC4C100572B10 /* Documentation */,
+				6997AB572D5BC4C100572B10 /* ScreenShots */,
+				6997AB582D5BC4C100572B10 /* Assets.xcassets */,
+				6997AB592D5BC4C100572B10 /* Info.plist */,
+				6997AB5A2D5BC4C100572B10 /* WindowWeaverr.entitlements */,
+				6997AB5B2D5BC4C100572B10 /* WindowWeaverrApp.swift */,
+			);
+			path = WindowWeaverr;
+			sourceTree = "<group>";
+		};
+		6997AB6D2D5BC4D500572B10 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				6997AB6C2D5BC4D500572B10 /* KeyboardShortcuts.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		6997AB712D5BC4D800572B10 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				6997AB6F2D5BC4D800572B10 /* StatusBarController.swift */,
+				6997AB702D5BC4D800572B10 /* StatusBarView.swift */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
 		D3EF748E2D5A7F590001C487 = {
 			isa = PBXGroup;
 			children = (
 				6997AB3A2D5B813A00572B10 /* Sources */,
 				6997AA812D5B57E300572B10 /* UI */,
-				D3EF74E02D5A85F30001C487 /* Features */,
-				D3EF74DF2D5A85E60001C487 /* Utils */,
-				D3EF74992D5A7F590001C487 /* WindomWeaverr */,
+				6997AB712D5BC4D800572B10 /* Features */,
+				6997AB6D2D5BC4D500572B10 /* Utils */,
+				6997AB5C2D5BC4C100572B10 /* WindowWeaverr */,
 				D3EF74982D5A7F590001C487 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -135,7 +193,7 @@
 		D3EF74982D5A7F590001C487 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D3EF74972D5A7F590001C487 /* WindomWeaverr.app */,
+				D3EF74972D5A7F590001C487 /* WindowWeaverr.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -143,9 +201,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D3EF74962D5A7F590001C487 /* WindomWeaverr */ = {
+		D3EF74962D5A7F590001C487 /* WindowWeaverr */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D3EF74A62D5A7F5A0001C487 /* Build configuration list for PBXNativeTarget "WindomWeaverr" */;
+			buildConfigurationList = D3EF74A62D5A7F5A0001C487 /* Build configuration list for PBXNativeTarget "WindowWeaverr" */;
 			buildPhases = (
 				D3EF74932D5A7F590001C487 /* Sources */,
 				D3EF74942D5A7F590001C487 /* Frameworks */,
@@ -156,16 +214,11 @@
 			dependencies = (
 				6997AB482D5BC20100572B10 /* PBXTargetDependency */,
 			);
-			fileSystemSynchronizedGroups = (
-				D3EF74992D5A7F590001C487 /* WindomWeaverr */,
-				D3EF74DF2D5A85E60001C487 /* Utils */,
-				D3EF74E02D5A85F30001C487 /* Features */,
-			);
-			name = WindomWeaverr;
+			name = WindowWeaverr;
 			packageProductDependencies = (
 			);
-			productName = WindomWeaverr;
-			productReference = D3EF74972D5A7F590001C487 /* WindomWeaverr.app */;
+			productName = WindowWeaverr;
+			productReference = D3EF74972D5A7F590001C487 /* WindowWeaverr.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -183,7 +236,7 @@
 					};
 				};
 			};
-			buildConfigurationList = D3EF74922D5A7F590001C487 /* Build configuration list for PBXProject "WindomWeaverr" */;
+			buildConfigurationList = D3EF74922D5A7F590001C487 /* Build configuration list for PBXProject "WindowWeaverr" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -200,7 +253,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D3EF74962D5A7F590001C487 /* WindomWeaverr */,
+				D3EF74962D5A7F590001C487 /* WindowWeaverr */,
 			);
 		};
 /* End PBXProject section */
@@ -210,6 +263,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6997AB5E2D5BC4C100572B10 /* .gitignore in Resources */,
+				6997AB5F2D5BC4C100572B10 /* CHANGELOG.md in Resources */,
+				6997AB602D5BC4C100572B10 /* CONTRIBUTING.md in Resources */,
+				6997AB612D5BC4C100572B10 /* LICENSE (MIT) in Resources */,
+				6997AB622D5BC4C100572B10 /* README.md in Resources */,
+				6997AB642D5BC4C100572B10 /* Ekran Resmi 2025-02-09 15.36.53.png in Resources */,
+				6997AB652D5BC4C100572B10 /* Ekran Resmi 2025-02-09 15.45.05.png in Resources */,
+				6997AB662D5BC4C100572B10 /* Ekran Resmi 2025-02-09 15.45.16.png in Resources */,
+				6997AB672D5BC4C100572B10 /* Ekran Resmi 2025-02-09 15.45.38.png in Resources */,
+				6997AB682D5BC4C100572B10 /* Ekran Resmi 2025-02-09 15.46.29.png in Resources */,
+				6997AB692D5BC4C100572B10 /* Ekran Resmi 2025-02-09 15.47.04.png in Resources */,
+				6997AB6A2D5BC4C100572B10 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,11 +286,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				6997AA822D5B57E300572B10 /* ModernButtonConfig.swift in Sources */,
+				6997AB5D2D5BC4C100572B10 /* WindowWeaverrApp.swift in Sources */,
 				6997AB442D5B84C200572B10 /* BackgroundPattern.swift in Sources */,
 				6997AB412D5B84A700572B10 /* ViewWidthKey.swift in Sources */,
 				6997AB382D5B7FE900572B10 /* ModernButtonStyle.swift in Sources */,
 				6997AA832D5B57E300572B10 /* ContentView.swift in Sources */,
 				6997AB3B2D5B813A00572B10 /* WindowManager.swift in Sources */,
+				6997AB722D5BC4D800572B10 /* StatusBarController.swift in Sources */,
+				6997AB732D5BC4D800572B10 /* StatusBarView.swift in Sources */,
+				6997AB6E2D5BC4D500572B10 /* KeyboardShortcuts.swift in Sources */,
 				6997AB3D2D5B814A00572B10 /* ScreenPosition.swift in Sources */,
 				6997AB3F2D5B844400572B10 /* Theme+Colors.swift in Sources */,
 				6997AA842D5B57E300572B10 /* ModernButton.swift in Sources */,
@@ -365,16 +434,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = WindomWeaverr/WindomWeaverr.entitlements;
+				CODE_SIGN_ENTITLEMENTS = WindowWeaverr/WindowWeaverr.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"WindomWeaverr/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = WindomWeaverr/Info.plist;
+				INFOPLIST_FILE = WindowWeaverr/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = WindowWeaver;
 				INFOPLIST_KEY_LSApplicationCategoryType = "Privacy - AppleEvents Sending Usage Description";
 				INFOPLIST_KEY_LSBackgroundOnly = YES;
@@ -387,7 +455,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = WindomWeaverr.WindomWeaverr;
+				PRODUCT_BUNDLE_IDENTIFIER = WindowWeaverr.WindowWeaverr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -399,16 +467,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = WindomWeaverr/WindomWeaverr.entitlements;
+				CODE_SIGN_ENTITLEMENTS = WindowWeaverr/WindowWeaverr.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"WindomWeaverr/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = WindomWeaverr/Info.plist;
+				INFOPLIST_FILE = WindowWeaverr/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = WindowWeaver;
 				INFOPLIST_KEY_LSApplicationCategoryType = "Privacy - AppleEvents Sending Usage Description";
 				INFOPLIST_KEY_LSBackgroundOnly = YES;
@@ -421,7 +488,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = WindomWeaverr.WindomWeaverr;
+				PRODUCT_BUNDLE_IDENTIFIER = WindowWeaverr.WindowWeaverr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -431,7 +498,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D3EF74922D5A7F590001C487 /* Build configuration list for PBXProject "WindomWeaverr" */ = {
+		D3EF74922D5A7F590001C487 /* Build configuration list for PBXProject "WindowWeaverr" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D3EF74A42D5A7F5A0001C487 /* Debug */,
@@ -440,7 +507,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D3EF74A62D5A7F5A0001C487 /* Build configuration list for PBXNativeTarget "WindomWeaverr" */ = {
+		D3EF74A62D5A7F5A0001C487 /* Build configuration list for PBXNativeTarget "WindowWeaverr" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D3EF74A72D5A7F5A0001C487 /* Debug */,
