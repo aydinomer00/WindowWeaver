@@ -32,6 +32,7 @@
 		6997AB6E2D5BC4D500572B10 /* KeyboardShortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6997AB6C2D5BC4D500572B10 /* KeyboardShortcuts.swift */; };
 		6997AB722D5BC4D800572B10 /* StatusBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6997AB6F2D5BC4D800572B10 /* StatusBarController.swift */; };
 		6997AB732D5BC4D800572B10 /* StatusBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6997AB702D5BC4D800572B10 /* StatusBarView.swift */; };
+		69D269532D5BC8AB00C08DA0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D269522D5BC89600C08DA0 /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		6997AB6C2D5BC4D500572B10 /* KeyboardShortcuts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardShortcuts.swift; sourceTree = "<group>"; };
 		6997AB6F2D5BC4D800572B10 /* StatusBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarController.swift; sourceTree = "<group>"; };
 		6997AB702D5BC4D800572B10 /* StatusBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarView.swift; sourceTree = "<group>"; };
+		69D269522D5BC89600C08DA0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D3EF74972D5A7F590001C487 /* WindowWeaverr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WindowWeaverr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -181,6 +183,7 @@
 		D3EF748E2D5A7F590001C487 = {
 			isa = PBXGroup;
 			children = (
+				69D269522D5BC89600C08DA0 /* AppDelegate.swift */,
 				6997AB3A2D5B813A00572B10 /* Sources */,
 				6997AA812D5B57E300572B10 /* UI */,
 				6997AB712D5BC4D800572B10 /* Features */,
@@ -289,6 +292,7 @@
 				6997AB5D2D5BC4C100572B10 /* WindowWeaverrApp.swift in Sources */,
 				6997AB442D5B84C200572B10 /* BackgroundPattern.swift in Sources */,
 				6997AB412D5B84A700572B10 /* ViewWidthKey.swift in Sources */,
+				69D269532D5BC8AB00C08DA0 /* AppDelegate.swift in Sources */,
 				6997AB382D5B7FE900572B10 /* ModernButtonStyle.swift in Sources */,
 				6997AA832D5B57E300572B10 /* ContentView.swift in Sources */,
 				6997AB3B2D5B813A00572B10 /* WindowManager.swift in Sources */,
