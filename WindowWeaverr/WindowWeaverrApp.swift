@@ -1,5 +1,5 @@
 //
-//  ekranBolmeApp.swift
+//  WindowWeaverrApp.swift
 //  ekranBolme
 //
 //  Created by Ömer Murat Aydın on 7.02.2025.
@@ -9,9 +9,9 @@
 import SwiftUI
 
 @main
-struct ekranBolmeApp: App {
+struct WindowWeaverrApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-    
+
     var body: some Scene {
         WindowGroup {
             ContentView()
@@ -21,7 +21,7 @@ struct ekranBolmeApp: App {
             CommandGroup(replacing: .newItem) {}
         }
     }
-    
+
     init() {
         // Status bar controller'ı başlat
         _ = StatusBarController.shared
